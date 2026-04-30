@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquire</title>
+</head>
+<body>
+     <header>
+        Admin
+    </header>
+    <h2>Freqeuntly Asked Questions</h2>
+
+    <footer>
+        @ Copy right reserved. Created by
+    </footer>
+    
+</body>
+</html>
