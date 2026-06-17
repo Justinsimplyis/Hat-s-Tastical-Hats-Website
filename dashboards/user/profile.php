@@ -4,215 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/public.css">
-    <title>My Profile — Hattie's Hat'istical Hats</title>
-    <style>
-/* ================================================================
-   User Dashboard — Light theme, same tokens as public.css
-   ================================================================ */
-:root {
-    --red:#C93B39;--red-hover:#DA4E4C;--red-light:rgba(201,59,57,.10);--red-muted:rgba(201,59,57,.06);
-    --pink:#CFA1A8;--pink-light:rgba(207,161,168,.18);--pink-muted:rgba(207,161,168,.10);
-    --bg:#FFF8F6;--bg-elevated:#FFFFFF;--card:#FFFFFF;--topbar-bg:rgba(255,248,246,.92);
-    --cream:#FFF0ED;--cream-dark:#FFE8E3;--cream-deeper:#FFDCD5;
-    --fg:#2A1F21;--fg-secondary:#6B5558;--fg-muted:#9A8588;
-    --border:#F0DDD8;--border-light:#F8EDEA;
-    --shadow-sm:0 1px 3px rgba(42,31,33,.06);--shadow-md:0 4px 12px rgba(42,31,33,.08);
-    --shadow-lg:0 12px 32px rgba(42,31,33,.12);--shadow-xl:0 24px 48px rgba(42,31,33,.16);
-    --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;
-    --ease:cubic-bezier(.4,0,.2,1);--duration:.2s;
-    --sidebar-w:260px;--sidebar-collapsed-w:72px;--topbar-h:68px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:15px;-webkit-font-smoothing:antialiased}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg);line-height:1.65;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;border:none;background:none;cursor:pointer;color:inherit}
-img{max-width:100%;display:block}
-input,textarea,select{font:inherit;border:none;outline:none;background:none}
-table{border-collapse:collapse;width:100%}
-ul{list-style:none}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--cream-deeper);border-radius:6px}
-
-/* ── TOPBAR ──────────────────────────────────────────────── */
-.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--topbar-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-light);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 28px;transition:box-shadow .3s var(--ease)}
-.topbar.scrolled{box-shadow:var(--shadow-sm)}
-.topbar-left{display:flex;align-items:center;gap:16px}
-.mobile-toggle{display:none;width:38px;height:38px;border-radius:var(--radius-sm);color:var(--fg-secondary);font-size:1.1rem;align-items:center;justify-content:center;transition:all var(--duration) var(--ease)}
-.mobile-toggle:hover{background:var(--cream);color:var(--fg)}
-.topbar-logo{display:flex;align-items:center;gap:10px}
-.topbar-logo-mark{width:36px;height:36px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.topbar-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.topbar-logo-name{font-size:.92rem;font-weight:700;color:var(--fg)}
-.topbar-logo-tagline{font-size:.6rem;font-weight:600;color:var(--pink);letter-spacing:.03em}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.topbar-icon-btn{position:relative;width:38px;height:38px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--fg-secondary);transition:all var(--duration) var(--ease)}
-.topbar-icon-btn:hover{background:var(--cream);color:var(--fg)}
-.profile-btn{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:var(--radius-full);transition:all var(--duration) var(--ease)}
-.profile-btn:hover{background:var(--cream)}
-.profile-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;font-size:.8rem;font-weight:600;display:flex;align-items:center;justify-content:center}
-.profile-label{font-size:.82rem;font-weight:500;color:var(--fg-secondary)}
-
-/* ── SIDEBAR ─────────────────────────────────────────────── */
-.sidebar{position:fixed;top:var(--topbar-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--bg-elevated);border-right:1px solid var(--border-light);display:flex;flex-direction:column;z-index:90;transition:width .3s var(--ease);overflow:hidden}
-.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:20px 16px 12px;flex-shrink:0}
-.sidebar-collapse-btn{width:28px;height:28px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-size:.7rem;transition:all var(--duration) var(--ease)}
-.sidebar-collapse-btn:hover{background:var(--cream);color:var(--fg-secondary)}
-.sidebar-nav{flex:1;padding:8px 12px;overflow-y:auto}
-.sidebar-section-label{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--pink);padding:0 12px;margin:16px 0 8px}
-.sb-nav-item{margin-bottom:2px}
-.sb-nav-link{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-sm);color:var(--fg-secondary);font-size:.88rem;font-weight:500;transition:all var(--duration) var(--ease);position:relative;white-space:nowrap;overflow:hidden}
-.sb-nav-link:hover{background:var(--cream);color:var(--fg)}
-.sb-nav-link.active{background:var(--red-light);color:var(--red);font-weight:600}
-.sb-nav-link.active::before{content:'';position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:3px;height:22px;background:var(--red);border-radius:0 3px 3px 0}
-.sb-nav-icon{width:20px;text-align:center;font-size:.95rem;flex-shrink:0}
-.sb-nav-label{transition:opacity .2s var(--ease),transform .2s var(--ease)}
-.sb-nav-badge{margin-left:auto;font-size:.7rem;font-weight:600;background:var(--red);color:#fff;padding:2px 8px;border-radius:var(--radius-full);flex-shrink:0}
-.sidebar-footer{padding:12px;border-top:1px solid var(--border-light);flex-shrink:0}
-.sb-logout{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-sm);color:var(--pink);font-size:.88rem;font-weight:500;transition:all var(--duration) var(--ease);width:100%}
-.sb-logout:hover{background:var(--pink-light);color:#c27a80}
-.sidebar-overlay{position:fixed;inset:0;background:rgba(42,31,33,.4);backdrop-filter:blur(4px);z-index:89;opacity:0;visibility:hidden;transition:all .3s var(--ease)}
-.sidebar-overlay.visible{opacity:1;visibility:visible}
-.sidebar.collapsed{width:var(--sidebar-collapsed-w)}
-.sidebar.collapsed .sidebar-collapse-btn{display:none}
-.sidebar.collapsed .sb-nav-label,.sidebar.collapsed .sidebar-section-label,.sidebar.collapsed .sb-nav-badge{opacity:0;width:0;overflow:hidden}
-.sidebar.collapsed .sb-nav-link{justify-content:center;padding:10px}
-.sidebar.collapsed .sb-logout{justify-content:center;padding:10px}
-.sidebar.collapsed .sidebar-header{justify-content:center}
-
-/* ── MAIN WRAPPER ────────────────────────────────────────── */
-.main-wrapper{margin-left:var(--sidebar-w);min-height:100vh;display:flex;flex-direction:column;transition:margin-left .3s var(--ease)}
-.sidebar.collapsed~.main-wrapper{margin-left:var(--sidebar-collapsed-w)}
-.main-content{flex:1;padding:28px}
-
-/* ── SECTION HEADER ──────────────────────────────────────── */
-.dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-.dash-section-header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
-.dash-section-header p{font-size:.88rem;color:var(--fg-muted)}
-
-/* ── PROFILE GRID ────────────────────────────────────────── */
-.profile-grid{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start}
-
-/* Profile Card */
-.profile-card{background:var(--card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-sm)}
-.profile-avatar-upload{text-align:center;margin-bottom:24px}
-.profile-avatar-large{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;font-size:2.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;overflow:hidden;border:4px solid var(--bg);box-shadow:var(--shadow-md)}
-.profile-avatar-large img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.avatar-edit{position:absolute;bottom:2px;right:2px;width:32px;height:32px;border-radius:50%;background:var(--fg);color:#fff;font-size:.7rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--duration) var(--ease);border:3px solid var(--bg)}
-.avatar-edit:hover{background:var(--red);transform:scale(1.1)}
-.profile-name-display{font-size:1.15rem;font-weight:700;color:var(--fg);margin-bottom:2px}
-.profile-email-display{font-size:.85rem;color:var(--fg-muted);word-break:break-all}
-.profile-since{font-size:.78rem;color:var(--fg-muted);margin-top:10px;display:flex;align-items:center;gap:6px}
-.profile-divider{height:1px;background:var(--border-light);margin:20px 0}
-.profile-stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
-.profile-stat-row .label{font-size:.82rem;color:var(--fg-muted)}
-.profile-stat-row .value{font-size:.88rem;font-weight:600;color:var(--fg)}
-.profile-stat-row .value.accent{color:var(--red)}
-.profile-danger-zone{margin-top:24px;padding-top:20px;border-top:1.5px solid rgba(201,59,57,.15)}
-.profile-danger-zone h4{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.btn-sm-danger{padding:9px 18px;border-radius:var(--radius-full);font-size:.82rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:all var(--duration) var(--ease);background:rgba(201,59,57,.06);color:var(--red);border:1.5px solid rgba(201,59,57,.18)}
-.btn-sm-danger:hover{background:rgba(201,59,57,.12);border-color:rgba(201,59,57,.3);transform:translateY(-1px)}
-
-/* ── FORMS ───────────────────────────────────────────────── */
-.form-group{margin-bottom:18px}
-.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--fg-secondary);margin-bottom:6px}
-.form-input{width:100%;padding:11px 16px;border-radius:var(--radius-md);border:1.5px solid var(--border);background:var(--bg);font-size:.9rem;color:var(--fg);transition:all var(--duration) var(--ease)}
-.form-input:focus{border-color:var(--red);box-shadow:0 0 0 3px var(--red-muted)}
-.form-input::placeholder{color:var(--fg-muted)}
-.form-input.invalid{border-color:var(--red);box-shadow:0 0 0 3px var(--red-muted)}
-.form-input.success{border-color:#6BCB8B;box-shadow:0 0 0 3px rgba(107,203,139,.1)}
-.form-error{display:none;font-size:.75rem;color:var(--red);margin-top:4px;align-items:center;gap:4px}
-.form-error.visible{display:flex}
-.form-hint{display:block;font-size:.72rem;color:var(--fg-muted);margin-top:4px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pwd-divider{display:flex;align-items:center;gap:12px;margin:28px 0 20px}
-.pwd-divider::before,.pwd-divider::after{content:'';flex:1;height:1px;background:var(--border-light)}
-.pwd-divider span{font-size:.78rem;color:var(--fg-muted);font-weight:500;white-space:nowrap}
-
-/* Password strength bar */
-.pwd-strength{margin-top:8px}
-.pwd-strength-bar{height:4px;border-radius:4px;background:var(--border-light);overflow:hidden}
-.pwd-strength-fill{height:100%;border-radius:4px;transition:all .3s var(--ease);width:0}
-.pwd-strength-fill.weak{width:25%;background:#E07070}
-.pwd-strength-fill.fair{width:50%;background:#D4923A}
-.pwd-strength-fill.good{width:75%;background:#D4923A}
-.pwd-strength-fill.strong{width:100%;background:#6BCB8B}
-.pwd-strength-label{font-size:.72rem;font-weight:600;margin-top:4px;transition:color .3s var(--ease)}
-
-/* ── BUTTONS ─────────────────────────────────────────────── */
-.btn-sm{padding:10px 20px;border-radius:var(--radius-full);font-size:.84rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:all var(--duration) var(--ease)}
-.btn-sm.primary{background:var(--red);color:#fff}
-.btn-sm.primary:hover{background:var(--red-hover);transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,59,57,.25)}
-.btn-sm.primary:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
-.btn-sm.ghost{background:var(--cream);color:var(--fg-secondary);border:1px solid var(--border)}
-.btn-sm.ghost:hover{background:var(--cream-dark);color:var(--fg)}
-.btn-sm.danger{background:rgba(201,59,57,.08);color:var(--red);border:1px solid rgba(201,59,57,.2)}
-.btn-sm.danger:hover{background:rgba(201,59,57,.15);border-color:rgba(201,59,57,.35)}
-.btn-sm.success{background:rgba(107,203,139,.1);color:#27753F;border:1px solid rgba(107,203,139,.2)}
-.btn-sm.success:hover{background:rgba(107,203,139,.18);border-color:rgba(107,203,139,.35)}
-
-/* ── CONFIRM DIALOG ──────────────────────────────────────── */
-.confirm-overlay{position:fixed;inset:0;z-index:250;background:rgba(42,31,33,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:all .25s var(--ease)}
-.confirm-overlay.visible{opacity:1;visibility:visible}
-.confirm-box{width:100%;max-width:420px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);padding:28px;text-align:center;transform:scale(.95);transition:transform .3s var(--ease)}
-.confirm-overlay.visible .confirm-box{transform:scale(1)}
-.confirm-icon{width:52px;height:52px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-.confirm-icon.danger{background:rgba(201,59,57,.1);color:var(--red)}
-.confirm-icon.warn{background:var(--cream);color:#D4923A}
-.confirm-box h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
-.confirm-box p{font-size:.88rem;color:var(--fg-muted);margin-bottom:24px;line-height:1.6}
-.confirm-actions{display:flex;gap:10px;justify-content:center}
-.confirm-actions .btn-sm{min-width:110px;justify-content:center}
-.confirm-input-row{margin-bottom:18px;text-align:left}
-.confirm-input-row label{display:block;font-size:.8rem;font-weight:600;color:var(--fg-secondary);margin-bottom:6px}
-.confirm-input-row input{width:100%;padding:10px 16px;border-radius:var(--radius-md);border:1.5px solid var(--border);background:var(--bg);font-size:.9rem;color:var(--fg);text-align:center}
-.confirm-input-row input:focus{border-color:var(--red);box-shadow:0 0 0 3px var(--red-muted)}
-.confirm-input-row input.invalid{border-color:var(--red);box-shadow:0 0 0 3px var(--red-muted)}
-
-/* ── TOAST ───────────────────────────────────────────────── */
-.toast-container{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
-.toast{display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:var(--radius-md);background:var(--fg);color:#fff;box-shadow:var(--shadow-lg);font-size:.88rem;font-weight:500;pointer-events:auto;animation:toastIn .35s var(--ease) forwards}
-.toast.success i{color:#6BCB8B}.toast.error i{color:#E07070}.toast.info i{color:var(--pink)}
-@keyframes toastIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-/* ── FOOTER & LOADING ────────────────────────────────────── */
-.dash-footer{padding:18px 28px;text-align:center;font-size:.78rem;color:var(--fg-muted);border-top:1px solid var(--border-light)}
-.dash-footer span{font-weight:600;color:var(--fg-secondary)}
-.dash-loading{display:flex;align-items:center;justify-content:center;gap:12px;padding:60px;color:var(--fg-muted)}
-.dash-loading .spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* Saved flash */
-@keyframes savedFlash{0%{box-shadow:0 0 0 0 rgba(107,203,139,.4)}70%{box-shadow:0 0 0 12px rgba(107,203,139,0)}100%{box-shadow:0 0 0 0 rgba(107,203,139,0)}}
-.form-input.just-saved{animation:savedFlash .6s var(--ease);border-color:#6BCB8B}
-
-/* ── RESPONSIVE ───────────────────────────────────────────── */
-@media(max-width:900px){
-    .profile-grid{grid-template-columns:1fr}
-    .profile-card{order:-1}
-}
-@media(max-width:768px){
-    .sidebar{transform:translateX(-100%);width:var(--sidebar-w)!important;z-index:200}
-    .sidebar.open{transform:translateX(0)}
-    .sidebar.collapsed .sb-nav-label,.sidebar.collapsed .sidebar-section-label,.sidebar.collapsed .sb-nav-badge,.sidebar.collapsed .sb-logout .nav-label{opacity:1;width:auto;overflow:visible}
-    .sidebar.collapsed .sb-nav-link{justify-content:flex-start;padding:10px 12px}
-    .sidebar.collapsed .sb-logout{justify-content:flex-start;padding:10px 12px}
-    .main-wrapper{margin-left:0!important}
-    .mobile-toggle{display:flex}
-    .topbar{padding:0 16px}
-    .profile-label{display:none}
-    .main-content{padding:20px 16px}
-    .form-row{grid-template-columns:1fr}
-}
-@media(max-width:480px){
-    .profile-avatar-large{width:90px;height:90px;font-size:2rem}
-    .confirm-actions{flex-direction:column}
-    .confirm-actions .btn-sm{width:100%}
-}
-:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-    </style>
+    <link rel="stylesheet" href="/assets/css/users/profile.css">
+    <title>My Profile — Hattie's Hat'istical Hats</title>  
 </head>
 <body>
 
@@ -231,8 +24,8 @@ ul{list-style:none}
     <div class="topbar-right">
         <a href="../../index.php" class="topbar-icon-btn" aria-label="Back to store" title="Back to store"><i class="fa-solid fa-store"></i></a>
         <a href="#" class="profile-btn" id="profileTopBtn" aria-label="Profile">
-            <span class="profile-avatar" id="topAvatar">H</span>
-            <span class="profile-label" id="topName">Loading...</span>
+            <span class="profile-avatar" id="topAvatar"></span>
+            <span class="profile-label" id="topName"></span>
         </a>
     </div>
 </header>
@@ -428,51 +221,8 @@ document.getElementById('confirmOverlay').addEventListener('click', function(e){
 });
 
 /* ================================================================
-   PROFILE — API
+   PROFILE — RENDERING
    ================================================================ */
-
-/*
-   Expected responses:
-
-   GET /api/user/profile.php
-   {
-     first_name: "Hattie",
-     last_name: "M",
-     email: "hattie@example.co.za",
-     phone: "+27 82 345 6789",
-     avatar: "/assets/uploads/avatars/123.jpg",  // null if none
-     created_at: "2024-03-15",
-     total_spent: 3450.00,
-     total_orders: 8,
-     total_requests: 2,
-     address: {
-       street: "12 Hat Lane",
-       city: "Cape Town",
-       province: "Western Cape",
-       postal_code: "8001"
-     }
-   }
-
-   POST /api/user/profile.php (update personal info)
-   Content-Type: multipart/form-data
-   Fields: first_name, last_name, email, phone, street, city, province, postal_code
-   Response: { success: true } or { success: false, message: "...", errors: { email: "..." } }
-
-   POST /api/user/profile.php (upload avatar)
-   Content-Type: multipart/form-data
-   Fields: avatar (file)
-   Response: { success: true, avatar: "/assets/uploads/..." }
-
-   POST /api/user/profile.php (change password)
-   Content-Type: application/json
-   Body: { action: "change_password", current_password: "...", new_password: "..." }
-   Response: { success: true } or { success: false, message: "Current password is incorrect" }
-
-   POST /api/user/profile.php (delete account)
-   Content-Type: application/json
-   Body: { action: "delete_account", password: "..." }
-   Response: { success: true } or { success: false, message: "..." }
-*/
 
 function loadProfile(){
     var loading = document.getElementById('profileLoading');
@@ -480,23 +230,24 @@ function loadProfile(){
     loading.style.display = '';
     content.style.display = 'none';
 
-    fetch('/api/user/profile.php')
-      .then(function(r){
-          if(!r.ok) throw new Error('HTTP '+r.status);
-          return r.json();
-      })
-      .then(function(data){
-          userData = data;
-          loading.style.display = 'none';
-          content.style.display = '';
-          renderProfile();
-          updateTopbar();
-      })
-      .catch(function(err){
-          console.error('Profile load error:', err);
-          loading.style.display = 'none';
-          content.innerHTML = emptyHTML('fa-user', 'Unable to load profile', 'Please try refreshing the page.');
-      });
+    // Load from your backend here
+    userData = {
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        avatar: null,
+        created_at: null,
+        total_spent: 0,
+        total_orders: 0,
+        total_requests: 0,
+        address: {}
+    };
+    
+    loading.style.display = 'none';
+    content.style.display = '';
+    renderProfile();
+    updateTopbar();
 }
 
 function updateTopbar(){
@@ -512,7 +263,6 @@ function renderProfile(){
     var initials = getInitials(userData.first_name, userData.last_name);
     var addr = userData.address || {};
 
-    // Avatar HTML
     var avatarImg = userData.avatar
         ? '<img src="'+esc(userData.avatar)+'" alt="Avatar" id="avatarImage">'
         : '';
@@ -524,7 +274,6 @@ function renderProfile(){
             '<input type="file" id="avatarInput" accept="image/jpeg,image/png,image/gif,image/webp" hidden>'+
         '</div>';
 
-    // Address section
     var addressHtml =
         '<div class="pwd-divider"><span>Delivery Address</span></div>'+
         '<div class="form-row">'+
@@ -556,7 +305,6 @@ function renderProfile(){
     document.getElementById('profileContent').innerHTML =
         '<div class="profile-grid">'+
 
-            /* ── Left: Profile Card ── */
             '<div class="profile-card">'+
                 '<div class="profile-avatar-upload">'+avatarHtml+'</div>'+
                 '<div class="profile-name-display" id="profileDisplayName">'+esc(userData.first_name+' '+userData.last_name)+'</div>'+
@@ -576,7 +324,6 @@ function renderProfile(){
                 '</div>'+
             '</div>'+
 
-            /* ── Right: Forms ── */
             '<div class="profile-card">'+
                 '<h3 style="font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-user" style="color:var(--red);font-size:.85rem;"></i> Personal Information</h3>'+
                 '<form id="profileForm" novalidate>'+
@@ -609,21 +356,17 @@ function renderProfile(){
 
         '</div>';
 
-    // Bind all events
     bindProfileEvents();
 }
 
-/* ── Event Bindings ──────────────────────────────────────── */
 function bindProfileEvents(){
 
-    /* Avatar upload */
     var avatarInput = document.getElementById('avatarInput');
     if(avatarInput){
         avatarInput.addEventListener('change', function(){
             var file = avatarInput.files[0];
             if(!file) return;
 
-            // Validate
             if(!file.type.match(/^image\/(jpeg|jpg|png|gif|webp)$/)){
                 showToast('Please select a valid image file (JPG, PNG, GIF, WebP)','error');
                 avatarInput.value = '';
@@ -635,7 +378,6 @@ function bindProfileEvents(){
                 return;
             }
 
-            // Show preview immediately
             var reader = new FileReader();
             reader.onload = function(e){
                 var container = document.getElementById('avatarContainer');
@@ -648,37 +390,19 @@ function bindProfileEvents(){
                     img.src = e.target.result;
                     img.alt = 'Avatar';
                     container.insertBefore(img, container.firstChild);
-                    // Remove text initials
                     var textNodes = Array.from(container.childNodes).filter(function(n){ return n.nodeType === 3; });
                     textNodes.forEach(function(n){ n.remove(); });
                 }
+                
+                // Simulate Upload Success
+                userData.avatar = e.target.result;
+                showToast('Profile photo updated!','success');
+                updateTopbar();
             };
             reader.readAsDataURL(file);
-
-            // Upload
-            var fd = new FormData();
-            fd.append('avatar', file);
-
-            fetch('/api/user/profile.php', { method: 'POST', body: fd })
-              .then(function(r){ return r.json(); })
-              .then(function(data){
-                  if(data.success){
-                      userData.avatar = data.avatar;
-                      showToast('Profile photo updated!','success');
-                      updateTopbar();
-                  } else {
-                      showToast(data.message || 'Failed to upload photo','error');
-                      loadProfile(); // Revert
-                  }
-              })
-              .catch(function(){
-                  showToast('Network error — photo not saved','error');
-                  loadProfile();
-              });
         });
     }
 
-    /* Profile form */
     var profileForm = document.getElementById('profileForm');
     profileForm.addEventListener('submit', function(e){
         e.preventDefault();
@@ -704,84 +428,46 @@ function bindProfileEvents(){
         if(postal && !/^\d{4}$/.test(postal)){ setFormError('pPostalCode','Must be 4 digits'); valid=false; }
 
         if(!valid){
-            // Scroll to first error
             var firstErr = document.querySelector('.form-error.visible');
             if(firstErr) firstErr.closest('.form-group').scrollIntoView({behavior:'smooth',block:'center'});
             return;
         }
 
-        // Disable button
         var btn = document.getElementById('profileSaveBtn');
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
 
-        var fd = new FormData();
-        fd.append('first_name', fn);
-        fd.append('last_name', ln);
-        fd.append('email', em);
-        if(ph) fd.append('phone', ph);
-        if(street) fd.append('street', street);
-        if(city) fd.append('city', city);
-        if(province) fd.append('province', province);
-        if(postal) fd.append('postal_code', postal);
+        // Simulate Form Save Success
+        setTimeout(function(){
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Changes';
 
-        fetch('/api/user/profile.php', { method: 'POST', body: fd })
-          .then(function(r){ return r.json(); })
-          .then(function(data){
-              btn.disabled = false;
-              btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Changes';
+            userData.first_name = fn;
+            userData.last_name = ln;
+            userData.email = em;
+            userData.phone = ph;
+            userData.address = { street: street, city: city, province: province, postal_code: postal };
 
-              if(data.success){
-                  userData.first_name = fn;
-                  userData.last_name = ln;
-                  userData.email = em;
-                  userData.phone = ph;
-                  userData.address = { street: street, city: city, province: province, postal_code: postal };
+            document.getElementById('profileDisplayName').textContent = fn + ' ' + ln;
+            document.getElementById('profileDisplayEmail').textContent = em;
+            updateTopbar();
 
-                  // Update display
-                  document.getElementById('profileDisplayName').textContent = fn + ' ' + ln;
-                  document.getElementById('profileDisplayEmail').textContent = em;
-                  updateTopbar();
+            document.querySelectorAll('#profileForm .form-input').forEach(function(inp){
+                if(inp.value.trim()){
+                    inp.classList.add('just-saved');
+                    setTimeout(function(){ inp.classList.remove('just-saved'); }, 700);
+                }
+            });
 
-                  // Flash inputs
-                  document.querySelectorAll('#profileForm .form-input').forEach(function(inp){
-                      if(inp.value.trim()){
-                          inp.classList.add('just-saved');
-                          setTimeout(function(){ inp.classList.remove('just-saved'); }, 700);
-                      }
-                  });
-
-                  showToast('Profile updated successfully!','success');
-              } else {
-                  // Map server errors
-                  if(data.errors){
-                      var fieldMap = {
-                          first_name:'pFirstName', last_name:'pLastName', email:'pEmail',
-                          phone:'pPhone', street:'pStreet', city:'pCity',
-                          province:'pProvince', postal_code:'pPostalCode'
-                      };
-                      Object.keys(data.errors).forEach(function(field){
-                          var formField = fieldMap[field];
-                          if(formField) setFormError(formField, data.errors[field]);
-                      });
-                  }
-                  showToast(data.message || 'Failed to save changes','error');
-              }
-          })
-          .catch(function(err){
-              btn.disabled = false;
-              btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Changes';
-              showToast('Network error — changes not saved','error');
-          });
+            showToast('Profile updated successfully!','success');
+        }, 800);
     });
 
-    /* Reset button */
     document.getElementById('profileResetBtn').addEventListener('click', function(){
         loadProfile();
         showToast('Form reset to saved values','info');
     });
 
-    /* Password strength meter */
     var newPwdInput = document.getElementById('pNewPwd');
     newPwdInput.addEventListener('input', function(){
         var val = newPwdInput.value;
@@ -813,7 +499,6 @@ function bindProfileEvents(){
         labelEl.style.color = color;
     });
 
-    /* Password form */
     var passwordForm = document.getElementById('passwordForm');
     passwordForm.addEventListener('submit', function(e){
         e.preventDefault();
@@ -837,42 +522,19 @@ function bindProfileEvents(){
         btn.disabled = true;
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Updating...';
 
-        fetch('/api/user/profile.php', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                action: 'change_password',
-                current_password: curPwd,
-                new_password: newPwd
-            })
-        })
-        .then(function(r){ return r.json(); })
-        .then(function(data){
+        // Simulate Password Update
+        setTimeout(function(){
             btn.disabled = false;
             btn.innerHTML = '<i class="fa-solid fa-lock"></i> Update Password';
-
-            if(data.success){
-                showToast('Password updated successfully!','success');
-                document.getElementById('pCurrentPwd').value = '';
-                document.getElementById('pNewPwd').value = '';
-                document.getElementById('pConfirmPwd').value = '';
-                document.getElementById('pwdStrength').style.display = 'none';
-            } else {
-                if(data.errors && data.errors.current_password){
-                    setFormError('pCurrentPwd', data.errors.current_password);
-                } else {
-                    showToast(data.message || 'Failed to update password','error');
-                }
-            }
-        })
-        .catch(function(){
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fa-solid fa-lock"></i> Update Password';
-            showToast('Network error — password not changed','error');
-        });
+            showToast('Password updated successfully!','success');
+            
+            document.getElementById('pCurrentPwd').value = '';
+            document.getElementById('pNewPwd').value = '';
+            document.getElementById('pConfirmPwd').value = '';
+            document.getElementById('pwdStrength').style.display = 'none';
+        }, 800);
     });
 
-    /* Delete account */
     document.getElementById('deleteAccountBtn').addEventListener('click', function(){
         var extraHtml =
             '<div class="confirm-input-row">'+
@@ -888,7 +550,7 @@ function bindProfileEvents(){
                 var input = document.getElementById('deleteConfirmInput');
                 if(!input || input.value.trim() !== 'DELETE'){
                     input.classList.add('invalid');
-                    return; // Don't close
+                    return;
                 }
                 closeConfirm();
                 deleteAccount();
@@ -897,7 +559,6 @@ function bindProfileEvents(){
             extraHtml
         );
 
-        // Focus the input after dialog appears
         setTimeout(function(){
             var input = document.getElementById('deleteConfirmInput');
             if(input){
@@ -908,11 +569,9 @@ function bindProfileEvents(){
     });
 }
 
-/* ── Delete Account ──────────────────────────────────────── */
 function deleteAccount(){
     showToast('Requesting account deletion...', 'info');
 
-    // Show password prompt
     var extraHtml =
         '<div class="confirm-input-row">'+
             '<label>Enter your password to confirm</label>'+
@@ -938,23 +597,11 @@ function deleteAccount(){
             closeConfirm();
             showToast('Deleting account...', 'info');
 
-            fetch('/api/user/profile.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ action: 'delete_account', password: pwd })
-            })
-            .then(function(r){ return r.json(); })
-            .then(function(data){
-                if(data.success){
-                    showToast('Account deleted. Redirecting...','success');
-                    setTimeout(function(){ window.location.href = '/index.php'; }, 1500);
-                } else {
-                    showToast(data.message || 'Failed to delete account','error');
-                }
-            })
-            .catch(function(){
-                showToast('Network error — please try again','error');
-            });
+            // Simulate Account Deletion
+            setTimeout(function(){
+                showToast('Account deleted. Redirecting...','success');
+                // window.location.href = '/index.php';
+            }, 1500);
         },
         'Delete Forever',
         extraHtml
@@ -966,12 +613,10 @@ function deleteAccount(){
     }, 100);
 }
 
-/* ── Form Error Helpers ──────────────────────────────────── */
 function setFormError(id, msg){
     var err = document.getElementById(id + 'Error');
     var inp = document.getElementById(id);
     if(err){
-        // Keep the icon, update text
         var textNode = err.querySelector('i') ? err.querySelector('i').nextSibling : err.firstChild;
         if(textNode) textNode.textContent = ' ' + msg;
         else err.innerHTML = '<i class="fa-solid fa-circle-exclamation" style="font-size:.65rem;"></i> ' + esc(msg);
@@ -991,7 +636,6 @@ function clearFormErrors(){
     });
 }
 
-// Clear individual field errors on input
 document.addEventListener('input', function(e){
     if(e.target.classList && e.target.classList.contains('form-input') && e.target.classList.contains('invalid')){
         e.target.classList.remove('invalid');
@@ -1000,14 +644,8 @@ document.addEventListener('input', function(e){
     }
 });
 
-/* ================================================================
-   INIT
-   ================================================================ */
 loadProfile();
 
-/* ================================================================
-   KEYBOARD
-   ================================================================ */
 document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
         closeConfirm();

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/requests.css">    
+    <link rel="stylesheet" href="/assets/css/admin/requests.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Customer Requests — Admin</title>
+    <title>Manage Customer Requests — Admin</title>
     
 </head>
 <body>
@@ -42,8 +42,8 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_products.php" role="menuitem">All Products</a>
-                <a href="/api/manage_orders.php" role="menuitem">All Orders</a>
+                <a href="/api/admin/manage_products.php" role="menuitem">All Products</a>
+                <a href="/api/admin/manage_orders.php" role="menuitem">All Orders</a>
             </div>
         </div>
 
@@ -54,8 +54,8 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_customers.php" role="menuitem">All Customers</a>
-                <a href="/api/manage_customer_request.php" role="menuitem" class="active">All Customer Requests</a>
+                <a href="/api/admin/manage_customers.php" role="menuitem">All Customers</a>
+                <a href="/api/admin/manage_customer_request.php" role="menuitem" class="active">All Customer Requests</a>
             </div>
         </div>
 
@@ -66,9 +66,9 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_settings.php" role="menuitem">General Settings</a>
+                <a href="/api/admin/settings.php" role="menuitem">General Settings</a>
                 <a href="/api/manage_notifications.php" role="menuitem">Notification Settings</a>
-                <a href="/api/manage_enquiries.php" role="menuitem">All Enquiries</a>
+                <a href="/api/admin/manage_enquiries.php" role="menuitem">All Enquiries</a>
             </div>
         </div>
     </nav>
@@ -99,11 +99,7 @@
             <button class="topbar-icon-btn" id="notifToggle" aria-label="Notifications" aria-haspopup="true">
                 <i class="fa-solid fa-bell"></i>
                 <span class="badge-dot"></span>
-            </button>
-            <a href="/dashboards/admin/profile.php" class="profile-btn" aria-label="Go to profile">
-                <span class="profile-avatar">A</span>
-                <span class="profile-label">Profile</span>
-            </a>
+            </button>            
         </div>
     </header>
 

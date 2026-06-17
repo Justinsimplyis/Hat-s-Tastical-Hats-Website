@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/admin.css">    
+    <link rel="stylesheet" href="/assets/css/admin/admin.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Admin Dashboard</title>
 </head>
@@ -44,8 +44,8 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_products.php" role="menuitem">All Products</a>
-                <a href="/api/manage_orders.php" role="menuitem">All Orders</a>
+                <a href="/api/admin/manage_products.php" role="menuitem">All Products</a>
+                <a href="/api/admin/manage_orders.php" role="menuitem">All Orders</a>
             </div>
         </div>
 
@@ -57,8 +57,8 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_customers.php" role="menuitem">All Customers</a>
-                <a href="/api/manage_customer_request.php" role="menuitem">All Customer Requests</a>            
+                <a href="/api/admin/manage_customers.php" role="menuitem">All Customers</a>
+                <a href="/api/admin/manage_customer_request.php" role="menuitem">All Customer Requests</a>            
             </div>
         </div>
 
@@ -70,9 +70,9 @@
                 <i class="fa-solid fa-chevron-down dropdown-icon"></i>
             </div>
             <div class="dropdown-menu" role="menu">
-                <a href="/api/manage_settings.php" role="menuitem">General Settings</a>
+                <a href="/api/admin/settings.php" role="menuitem">General Settings</a>
                 <a href="/api/notifications.php" role="menuitem">Notification Settings</a>
-                <a href="/api/manage_enquiries.php" role="menuitem">All Enquiries</a>
+                <a href="/api/admin/manage_enquiries.php" role="menuitem">All Enquiries</a>
             </div>
         </div>
     </nav>
@@ -168,7 +168,7 @@
                 <div class="panel">
                     <div class="panel-header">
                         <h2>New Customers</h2>
-                        <a href="/api/manage_customers.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="/api/admin/manage_customers.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="panel-body">
                         <table class="data-table" id="customersTable">
@@ -191,7 +191,7 @@
                 <div class="panel">
                     <div class="panel-header">
                         <h2>New Customer Requests</h2>
-                        <a href="/api/customer_request.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="/api/admin/manage_customer_request.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="panel-body">
                         <table class="data-table" id="requestsTable">
@@ -258,6 +258,7 @@
             <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
+    
     <!-- ========== LOGOUT CONFIRM MODAL ========== -->
 <div class="modal-overlay" id="logoutModal">
     <div class="modal-box" style="max-width: 380px;">
