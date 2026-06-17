@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/public.css">
-    <title>Hattie's Hat'istical Hats</title>
+    <title>Hattie's Hat'istical Hats</title>    
     
 </head>
 <body>
@@ -34,19 +34,14 @@
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span class="cart-badge" id="cartBadge">0</span>
             </button>
-            <a href="/public/auth/login_and_register.php" class="btn-nav-account nav-desktop">
+            <button class="btnAccount-popup">
                 <i class="fa-solid fa-user"></i> Account
-            </a>
+            </button>
+            
             <button class="nav-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <button>
-            <a href="/dashboards/admin/index.php">Admin</a>
-        </button>
-            <button>
-            <a href="/dashboards/user/index.php">User</a>
-        </button>
     </div>
 </nav>
 
@@ -72,9 +67,9 @@
         <a href="#contact">Contact Us</a>
     </div>
     <div class="mobile-menu-footer">
-        <a href="/public/auth/login_register.php" class="btn-nav-account" style="display:block;text-align:center;width:100%;margin-left:0;padding:12px;">
-            <i class="fa-solid fa-user"></i> Account
-        </a>
+        <button class="btnAccount-popup" style="display:flex;align-items:center;justify-content:center;text-align:center;width:100%;margin-left:0;padding:12px;">
+            <i class="fa-solid fa-user"></i>
+        </button>
     </div>
 </div>
 
@@ -197,7 +192,7 @@
             </div>
             <div class="catalog-filters" id="catalogFilters">
                 <button class="filter-chip active" data-filter="all">All</button>
-                <!-- Category chips populated dynamically from API -->
+                <!-- Category chips populated dynamically from Database -->
             </div>
         </div>
         <div id="catalogLoading" class="catalog-loading">
@@ -330,7 +325,7 @@
     </div>
     <div class="footer-bottom">
         <span>&copy; 2025 Hattie's Hat'istical Hats. All rights reserved.</span>
-        <span>Crafted with <i class="fa-solid fa-heart" style="color:var(--red);font-size:.75rem;"></i> in South Africa</span>
+        <span>Crafted with <i class="fa-solid fa-heart" style="color:var(--red);font-size:.75rem;"></i> By Justin Plaatjies</span>
     </div>
 </footer>
 
@@ -346,6 +341,79 @@
             <div class="search-popup-empty">
                 <i class="fa-solid fa-magnifying-glass" style="font-size:1.5rem;display:block;margin-bottom:8px;"></i>
                 Start typing to search our catalog
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== ACCOUNT MODAL ======================== -->
+<div class="modal-overlay account-modal" id="accountModal">
+    <div class="modal-box">
+        <button class="modal-close" id="accountClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="account-box">
+            <!-- Login Form -->
+            <div class="form-box login active" id="loginFormBox">
+                <div class="logreg-title">
+                    <h2>Login</h2>
+                    <p>Please login to use platform</p>
+                </div>
+                <form action="#" id="loginForm">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-eye"></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Remember Me</label>
+                        <a href="/public/auth/forgot_password.php">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:10px;">Login</button>
+                    <div class="logreg-link">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form-box register" id="registerFormBox">
+                <div class="logreg-title">
+                    <h2>Registration</h2>
+                    <p>Please provide the following to create your account</p>
+                </div>
+                <form action="#" id="registerForm">
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" required>
+                        <label>Full Name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="fa-solid fa-eye"></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:10px;">Register</button>
+                    <div class="logreg-link">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="dashboard-quick-links">
+                <a href="/dashboards/admin/index.php" class="quick-link-btn"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                <a href="/dashboards/user/index.php" class="quick-link-btn"><i class="fa-solid fa-user-gear"></i> User</a>
             </div>
         </div>
     </div>
@@ -478,9 +546,6 @@ function showToast(msg, type) {
 
 /* ================================================================
    API FETCH — Products
-   Expected response: { products: [...], categories: [...] }
-   Each product: { id, name, category, price, oldPrice, status, badge, images: [...], description }
-   Each category: { id, name }
    ================================================================ */
 function fetchProducts() {
     var loading = document.getElementById('catalogLoading');
@@ -490,21 +555,11 @@ function fetchProducts() {
     grid.style.display = 'none';
     empty.style.display = 'none';
 
-    /*
-       In production, replace this with:
-       fetch('/api/get_public_products.php')
-         .then(function(r) { return r.json(); })
-         .then(function(data) { allProducts = data.products; categories = data.categories; renderCatalog(); })
-         .catch(function(err) { loading.style.display='none'; empty.style.display=''; empty.querySelector('h4').textContent='Unable to load products'; empty.querySelector('p').textContent='Please try again later.'; });
-    */
-
-    // Temporary simulation — REMOVE THIS BLOCK in production
     setTimeout(function() {
         allProducts = [];
         categories = [];
         renderCatalog();
     }, 800);
-    // END TEMPORARY SIMULATION
 }
 
 /* ================================================================
@@ -517,14 +572,12 @@ function renderCatalog() {
     var showMore = document.getElementById('catalogShowMore');
     loading.style.display = 'none';
 
-    // Build category filter chips
     var filtersEl = document.getElementById('catalogFilters');
     filtersEl.innerHTML = '<button class="filter-chip active" data-filter="all">All</button>';
     categories.forEach(function(cat) {
         filtersEl.innerHTML += '<button class="filter-chip" data-filter="' + escapeHtml(cat.id) + '">' + escapeHtml(cat.name) + '</button>';
     });
 
-    // Footer categories
     var footerCats = document.getElementById('footerCategories');
     footerCats.innerHTML = categories.map(function(cat) {
         return '<a href="#catalog">' + escapeHtml(cat.name) + '</a>';
@@ -585,7 +638,6 @@ function renderFilteredProducts() {
             '</div></div>';
     }).join('');
 
-    // Bind actions
     grid.querySelectorAll('[data-add-cart]').forEach(function(b) { b.addEventListener('click', function(){ addToCart(b.dataset.addCart); }); });
     grid.querySelectorAll('[data-view]').forEach(function(b) { b.addEventListener('click', function(){ openProductDetail(b.dataset.view); }); });
     grid.querySelectorAll('[data-custom]').forEach(function(b) { b.addEventListener('click', function(){ openCustomRequest(b.dataset.custom); }); });
@@ -671,7 +723,6 @@ function openProductDetail(productId) {
     productDetailModal.classList.add('visible');
     document.body.style.overflow = 'hidden';
 
-    // Bind carousel
     if (carouselImages.length > 1) {
         document.getElementById('pdPrev').addEventListener('click', function(){ carouselGo(currentCarouselIndex - 1); });
         document.getElementById('pdNext').addEventListener('click', function(){ carouselGo(currentCarouselIndex + 1); });
@@ -681,7 +732,6 @@ function openProductDetail(productId) {
         startCarouselAutoplay();
     }
 
-    // Bind actions
     productDetailContent.querySelector('[data-add-cart-detail]').addEventListener('click', function(){ addToCart(p.id); closeProductDetail(); });
     productDetailContent.querySelector('[data-custom-detail]').addEventListener('click', function(){ closeProductDetail(); openCustomRequest(p.id); });
 }
@@ -747,7 +797,6 @@ function openCustomRequest(productId) {
         customRefProductEl.style.display = 'none';
     }
 
-    // Reset form
     document.getElementById('customRequestForm').reset();
     ['customName','customEmail','customDescription'].forEach(function(id){
         document.getElementById(id + 'Error').textContent = '';
@@ -767,7 +816,6 @@ function closeCustomRequest() {
 customRequestClose.addEventListener('click', closeCustomRequest);
 customRequestModal.addEventListener('click', function(e){ if (e.target === customRequestModal) closeCustomRequest(); });
 
-// Drag & drop
 customUploadZone.addEventListener('click', function(){ customFileInput.click(); });
 customUploadZone.addEventListener('dragover', function(e){ e.preventDefault(); customUploadZone.classList.add('drag-over'); });
 customUploadZone.addEventListener('dragleave', function(){ customUploadZone.classList.remove('drag-over'); });
@@ -805,7 +853,6 @@ function renderCustomPreviews() {
     });
 }
 
-// Submit custom request
 document.getElementById('customRequestForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var name = document.getElementById('customName').value.trim();
@@ -823,26 +870,6 @@ document.getElementById('customRequestForm').addEventListener('submit', function
     if (!desc) { document.getElementById('customDescriptionError').textContent = 'Please describe what you want'; document.getElementById('customDescription').classList.add('invalid'); valid = false; }
     if (!valid) return;
 
-    // Build FormData with reference images
-    var formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('phone', document.getElementById('customPhone').value.trim());
-    formData.append('budget', document.getElementById('customBudget').value);
-    formData.append('description', desc);
-    customReferenceImages.forEach(function(img, i) { formData.append('reference_images[' + i + ']', img.file); });
-
-    // Get ref product info
-    var refProduct = customRefProductEl.querySelector('strong');
-    if (refProduct) formData.append('reference_product', refProduct.textContent);
-
-    /*
-       In production:
-       fetch('/api/custom_request.php', { method: 'POST', body: formData })
-         .then(function(r){ return r.json(); })
-         .then(function(data){ if(data.success){ showToast('Custom request submitted!','success'); closeCustomRequest(); } else { showToast(data.message || 'Something went wrong','error'); } })
-         .catch(function(){ showToast('Unable to submit request','error'); });
-    */
     showToast('Custom request submitted! We\'ll be in touch soon.', 'success');
     closeCustomRequest();
 });
@@ -953,6 +980,67 @@ mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
 
 /* ================================================================
+   ACCOUNT MODAL LOGIC
+   ================================================================ */
+var accountModal = document.getElementById('accountModal');
+var accountClose = document.getElementById('accountClose');
+var loginFormBox = document.getElementById('loginFormBox');
+var registerFormBox = document.getElementById('registerFormBox');
+
+// Open Modal
+document.querySelectorAll('.btnAccount-popup').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        accountModal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Close Modal
+accountClose.addEventListener('click', function() {
+    accountModal.classList.remove('visible');
+    document.body.style.overflow = '';
+});
+
+accountModal.addEventListener('click', function(e) {
+    if (e.target === accountModal) {
+        accountModal.classList.remove('visible');
+        document.body.style.overflow = '';
+    }
+});
+
+// Switch to Register
+document.querySelectorAll('.register-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginFormBox.classList.remove('active');
+        registerFormBox.classList.add('active');
+    });
+});
+
+// Switch to Login
+document.querySelectorAll('.login-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        registerFormBox.classList.remove('active');
+        loginFormBox.classList.add('active');
+    });
+});
+
+// Handle Submits (Placeholder)
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showToast('Login functionality is not yet connected to backend.', 'info');
+    // accountModal.classList.remove('visible'); document.body.style.overflow = '';
+});
+
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showToast('Registration functionality is not yet connected to backend.', 'info');
+    // accountModal.classList.remove('visible'); document.body.style.overflow = '';
+});
+
+/* ================================================================
    CONTACT FORM
    ================================================================ */
 document.getElementById('contactForm').addEventListener('submit', function(e){
@@ -964,10 +1052,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
     if(!subject){document.getElementById('contactSubjectError').textContent='Please select a subject';document.getElementById('contactSubject').classList.add('invalid');valid=false;}
     if(!message){document.getElementById('contactMessageError').textContent='Message is required';document.getElementById('contactMessage').classList.add('invalid');valid=false;}
     if(!valid) return;
-    /*
-       fetch('/api/contact.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone:document.getElementById('contactPhone').value.trim(),subject,message})})
-         .then(function(r){return r.json();}).then(function(d){...}).catch(function(){...});
-    */
     document.getElementById('contactFormCard').innerHTML='<div class="contact-success"><i class="fa-solid fa-circle-check"></i><h4>Message Sent Successfully!</h4><p>Thank you, '+escapeHtml(name)+'. We\'ll get back to you within 24 hours.</p></div>';
     showToast('Your message has been sent!','success');
 });
@@ -976,7 +1060,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
    KEYBOARD SHORTCUTS
    ================================================================ */
 document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'){closeSearch();closeCart();closeProductDetail();closeCustomRequest();closeMobileMenu();}
+    if(e.key==='Escape'){closeSearch();closeCart();closeProductDetail();closeCustomRequest();closeMobileMenu(); if(accountModal.classList.contains('visible')){accountModal.classList.remove('visible'); document.body.style.overflow='';}}
     if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();}
 });
 </script>
