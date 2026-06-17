@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/public.css">
     <title>Hattie's Hat'istical Hats</title>    
-    
+    <style>
+
+        
+    </style>
 </head>
 <body>
 
@@ -14,12 +17,13 @@
 <nav class="nav" id="nav">
     <div class="nav-inner">
         <a href="#home" class="nav-logo">
-            <div class="nav-logo-mark">H</div>
-            <div class="nav-logo-text">
-                <span class="nav-logo-name">Hattie's</span>
-                <span class="nav-logo-tagline">Hat'istical Hats</span>
-            </div>
-        </a>
+             <img src="/assets/images/logo.png" alt="Hattie's Hat'istical Hats" class="nav-logo-img">
+            <span class="logo-text">
+                <span class="logo-name">Hattie's</span>
+                <span class="logo-tagline">Hat'istical Hats</span>
+            </span>
+        </a>             
+        
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -49,13 +53,9 @@
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-header">
-        <div class="nav-logo">
-            <div class="nav-logo-mark">H</div>
-            <div class="nav-logo-text">
-                <span class="nav-logo-name">Hattie's</span>
-                <span class="nav-logo-tagline">Hat'istical Hats</span>
-            </div>
-        </div>
+        <a href="#home" class="nav-logo">
+            <img src="/assets/images/logo.png" alt="Hattie's Hat'istical Hats" class="nav-logo-img">
+        </a>
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
             <i class="fa-solid fa-xmark"></i>
         </button>
