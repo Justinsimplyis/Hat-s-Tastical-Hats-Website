@@ -35,6 +35,13 @@
                 <span class="nav-label">Dashboard</span>
             </a>
         </div>
+        <div class="nav-item">
+            <a href="/api/users/manage_cart.php" class="nav-link" data-tooltip="Cart">
+                <i class="fa-solid fa-shopping-cart nav-icon"></i>
+                <span class="nav-label">Cart</span>
+            </a>
+        </div>
+        
 
         <div class="nav-item">
             <a href="/api/users/manage_orders.php" class="nav-link" data-tooltip="My Orders">
@@ -155,7 +162,7 @@
             <div class="panel">
                 <div class="panel-header">
                     <h2>Recent Orders</h2>
-                    <a href="#" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="/api/users/manage_orders.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="panel-body">
                     <table class="data-table">
@@ -179,7 +186,7 @@
             <div class="panel">
                 <div class="panel-header">
                     <h2>My Custom Requests</h2>
-                    <a href="#" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="/api/users/manage_custom_requests.php" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="panel-body">
                     <table class="data-table">

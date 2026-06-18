@@ -1,6 +1,5 @@
-        /* Hattie's Hat'istical Hats — Public Storefront
-   Light warm palette — inverse of admin dark theme
-   Move this entire <style> block into /assets/css/public.css */
+/* Hattie's Hat'istical Hats — Public Storefront
+   Light warm palette — inverse of admin dark theme */
 :root {
     --red:#C93B39;--red-hover:#DA4E4C;
     --red-light:rgba(201,59,57,.10);
