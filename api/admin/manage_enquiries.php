@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/admin/enquiries.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>All Enquiries — Admin Dashboard</title>   
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <title>Hattie's Hats'tastcial Hats | Admin | All Enquiries </title>   
 </head>
 <body>
 
