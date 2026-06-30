@@ -176,7 +176,7 @@
         </div>
         <div class="footer-col">
             <h4>Support</h4>
-            <a href="/api/support/help_centre.php" aria-current="page">Help Centre</a>
+            <a href="#" class="active">Help Centre</a>
             <a href="/api/support/returns_policy.php">Return Policy</a>
             <a href="/api/support/shipping_info.php">Shipping Info</a>
             <a href="/index.php#contact">Contact Us</a>
@@ -189,8 +189,8 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <span>&copy; 2023 Hattie's Hat'istical Hats. All rights reserved.</span>
-        <span>Designed with <i class="fa-solid fa-heart" style="color:var(--red)"></i> in South Africa</span>
+        <span>&copy; 2025 Hattie's Hat'istical Hats. All rights reserved.</span>
+        <span>Crafted with <i class="fa-solid fa-heart" style="color:var(--red)"></i> Justin Dev 08</span>
     </div>
 </footer>
 

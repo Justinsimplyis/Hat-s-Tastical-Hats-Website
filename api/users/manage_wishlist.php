@@ -278,7 +278,7 @@ body:has(.sidebar.collapsed) .main-wrapper { margin-left: var(--sidebar-collapse
 
 .wishlist-card-body { padding: 18px 20px; }
 .wishlist-card-category { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pink); margin-bottom: 6px; }
-.wishlist-card-name { font-size: 0.95rem; font-weight: 700; color: var(--fg); line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wishlist-card-name { font-size: 0.95rem; font-weight: 700; color: var(--fg); line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .wishlist-card-name a { transition: color var(--duration) var(--ease); }
 .wishlist-card-name a:hover { color: var(--red); }
 
